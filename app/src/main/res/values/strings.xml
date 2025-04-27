@@ -1,3 +1,48 @@
 <resources>
-    <string name="app_name">Project5</string>
+    <string name="app_name">RU Burger ©</string>
+    <string name="display_integer">start an activity with extra data (integer)</string>
+    <string name="display_string">start an activity with extra data (string)</string>
+    <string name="rutgers_website">
+start an activity with implicit intent (rutgers.edu)
+</string>
+    <string name="linearlayout">start an activity with a LinearLayout</string>
+    <string name="burgers">Burgers</string>
+    <string name="sandwiches">Sandwiches</string>
+    <string name="beverages">Beverages</string>
+    <string name="sides">Sides</string>
+    <string name="current">Current Order</string>
+    <string name="all">All Orders</string>
+
+    <string name="burgers_desc">Order a burger</string>
+    <string name="sandwiches_desc">Order a sandwich</string>
+    <string name="beverages_desc">Order a beverage</string>
+    <string name="sides_desc">Order a sides</string>
+    <string name="current_desc">View current order</string>
+    <string name="all_desc">View all existing orders</string>
+
+    <string name="patties">Number of Patties</string>
+    <string name="bread">Bread Style</string>
+    <string name="add_ons">Add-Ons</string>
+    <string name="quantity">Quantity</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="add_order">Add to Order</string>
+    <string name="combo">Make a Combo</string>
+
+    <string name="single_p">Single</string>
+    <string name="double_p">Double</string>
+
+    <string name="brioche">Brioche</string>
+    <string name="wheat">Wheat</string>
+    <string name="pretzel">Pretzel</string>
+
+    <string name="lettuce">Lettuce</string>
+    <string name="tomato">Tomato</string>
+    <string name="onion">Onion</string>
+    <string name="avocado">Avocado</string>
+    <string name="cheese">Cheese</string>
+
+
+
+
+
 </resources>
