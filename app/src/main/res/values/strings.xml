@@ -24,7 +24,7 @@ start an activity with implicit intent (rutgers.edu)
     <string name="bread">Bread Style</string>
     <string name="add_ons">Add-Ons</string>
     <string name="quantity">Quantity</string>
-    <string name="subtotal">Subtotal</string>
+    <string name="subtotal">Subtotal:</string>
     <string name="add_order">Add to Order</string>
     <string name="combo">Make a Combo</string>
 
