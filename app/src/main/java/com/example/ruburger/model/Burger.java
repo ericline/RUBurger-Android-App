@@ -1,5 +1,6 @@
 package com.example.ruburger.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -8,7 +9,7 @@ import java.util.ArrayList;
  * Additional toppings (add-ons) can be included and affect the total price.
  * @author Eric Lin, Anish Mande
  */
-public class Burger extends Sandwich {
+public class Burger extends Sandwich implements Serializable {
     private boolean doublePatty;
 
     /**
@@ -21,6 +22,7 @@ public class Burger extends Sandwich {
         super(bread, Protein.BEEF_PATTY, addOns);
         this.doublePatty = doublePatty;
     }
+
 
     /**
      * Calculates the total price of the burger.
@@ -43,6 +45,25 @@ public class Burger extends Sandwich {
             }
         }
         return (basePrice + addOnTotal) * quantity;
+    }
+
+    /**
+     * Returns a string representation of the burger without price or quantity.
+     * @return a simple description of the burger
+     */
+    @Override
+    public String withoutPrice() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(doublePatty ? "Double" : "Single").append(" Patty Burger on ").append(bread);
+        if (addOns != null && !addOns.isEmpty()) {
+            sb.append(" with ");
+            for (int i = 0; i < addOns.size(); i++) {
+                sb.append(addOns.get(i));
+                if (i < addOns.size() - 1) sb.append(", ");
+            }
+        }
+        sb.append(" x").append(quantity);
+        return sb.toString();
     }
 
     /**

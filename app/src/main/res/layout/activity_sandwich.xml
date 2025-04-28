@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.SandwichActivity">
+
+    <LinearLayout
+        android:id="@+id/top_bar"
+        android:layout_width="0dp"
+        android:layout_height="125dp"
+        android:background="@color/red"
+        android:gravity="clip_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/app_logo"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:contentDescription="@string/app_name"
+            app:srcCompat="@drawable/sandwich_icon" />
+
+        <TextView
+            android:id="@+id/main_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="casual"
+            android:text="@string/sandwiches"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textIsSelectable="false"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="0dp"
+        android:layout_height="125dp"
+        android:background="@color/red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/add_order_bt"
+                android:layout_width="0dp"
+                android:layout_height="75dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:onClick="addToOrder"
+                android:text="@string/add_order" />
+
+            <Button
+                android:id="@+id/combo_bt"
+                android:layout_width="0dp"
+                android:layout_height="75dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:onClick="makeCombo"
+                android:text="@string/combo" />
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <TableLayout
+        android:layout_width="0dp"
+        android:layout_height="594dp"
+        android:gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_bar">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingStart="20dp"
+            android:paddingTop="40dp">
+
+            <TextView
+                android:id="@+id/protein_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="casual"
+                android:text="@string/protein"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
+
+            <RadioGroup
+                android:id="@+id/protein_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/roast_beef"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:scaleX="1.3"
+                    android:scaleY="1.3"
+                    android:text="@string/roast_beef"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/salmon"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_weight="1"
+                    android:scaleX="1.3"
+                    android:scaleY="1.3"
+                    android:text="@string/salmon"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/chicken"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_weight="1"
+                    android:scaleX="1.3"
+                    android:scaleY="1.3"
+                    android:text="@string/chicken"
+                    android:textSize="16sp" />
+            </RadioGroup>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:paddingStart="20dp"
+            android:paddingTop="40dp">
+
+            <TextView
+                android:id="@+id/bread_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="casual"
+                android:text="@string/bread"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
+
+            <RadioGroup
+                android:id="@+id/bread_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/brioche_option"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:scaleX="1.3"
+                    android:scaleY="1.3"
+                    android:text="@string/brioche"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/wheat_option"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_weight="1"
+                    android:scaleX="1.3"
+                    android:scaleY="1.3"
+                    android:text="@string/wheat"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/pretzel_option"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_weight="1"
+                    android:scaleX="1.3"
+                    android:scaleY="1.3"
+                    android:text="@string/pretzel"
+                    android:textSize="16sp" />
+            </RadioGroup>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:paddingStart="20dp"
+            android:paddingTop="40dp">
+
+            <TextView
+                android:id="@+id/add_ons_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="casual"
+                android:text="@string/add_ons"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
+
+            <CheckBox
+                android:id="@+id/lettuce_option"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_weight="1"
+                android:checked="false"
+                android:scaleX="1.3"
+                android:scaleY="1.3"
+                android:text="@string/lettuce"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/tomato_option"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="false"
+                android:duplicateParentState="false"
+                android:scaleX="1.3"
+                android:scaleY="1.3"
+                android:text="@string/tomato"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/onion_option"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="false"
+                android:duplicateParentState="false"
+                android:scaleX="1.3"
+                android:scaleY="1.3"
+                android:text="@string/onion"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:paddingTop="15dp">
+
+            <CheckBox
+                android:id="@+id/avocado_option"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_weight="1"
+                android:checked="false"
+                android:duplicateParentState="false"
+                android:scaleX="1.3"
+                android:scaleY="1.3"
+                android:text="@string/avocado"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/cheese_option"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_weight="2"
+                android:checked="false"
+                android:scaleX="1.3"
+                android:scaleY="1.3"
+                android:text="@string/cheese"
+                android:textSize="16sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:paddingStart="20dp"
+            android:paddingTop="40dp">
+
+            <TextView
+                android:id="@+id/quantity_txt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="casual"
+                android:text="@string/quantity"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/quantity_option"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="40dp"
+                android:layout_weight="2"
+                android:spinnerMode="dropdown" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:paddingStart="20dp"
+            android:paddingTop="25dp">
+
+            <TextView
+                android:id="@+id/total_txt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="casual"
+                android:text="@string/subtotal"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/subtotal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3.5"
+                android:fontFamily="casual"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

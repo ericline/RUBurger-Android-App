@@ -12,6 +12,8 @@ start an activity with implicit intent (rutgers.edu)
     <string name="sides">Sides</string>
     <string name="current">Current Order</string>
     <string name="all">All Orders</string>
+    <string name="combo_title">Combo</string>
+    <string name="drinks">Drinks</string>
 
     <string name="burgers_desc">Order a burger</string>
     <string name="sandwiches_desc">Order a sandwich</string>
@@ -27,6 +29,7 @@ start an activity with implicit intent (rutgers.edu)
     <string name="subtotal">Subtotal:</string>
     <string name="add_order">Add to Order</string>
     <string name="combo">Make a Combo</string>
+    <string name="combo_instructions">Choose one side and one medium drink</string>
 
     <string name="single_p">Single</string>
     <string name="double_p">Double</string>
@@ -41,8 +44,12 @@ start an activity with implicit intent (rutgers.edu)
     <string name="avocado">Avocado</string>
     <string name="cheese">Cheese</string>
 
+    <string name="chips">Chips</string>
+    <string name="apples">Apples</string>
 
-
-
+    <string name="protein">Protein</string>
+    <string name="roast_beef">Roast Beef</string>
+    <string name="salmon">Salmon</string>
+    <string name="chicken">Chicken</string>
 
 </resources>

@@ -40,10 +40,6 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "onCreate()", Toast.LENGTH_SHORT).show();
     }
 
-    private void goToActivity(Class<?> cls) {
-        Intent intent = new Intent(this, cls);
-        startActivity(intent);
-    }
 
     /**
      * A callback method executed right after onCreate().
@@ -51,14 +47,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         Toast.makeText(this, "onStart()", Toast.LENGTH_SHORT).show();
-    }
-
-    /**
-     * A callback method executed right after onStart().
-     */
-    protected void onResume() {
-        super.onResume();
-        Toast.makeText(this, "onResume()", Toast.LENGTH_SHORT).show();
     }
 
     public void goToBurger(View view) {
@@ -71,10 +59,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToCombo(View view) {
-        Intent intent = new Intent(this, OrderActivity.class);
-        startActivity(intent);
-    }
 
     /**
      * The event handler for the button click.

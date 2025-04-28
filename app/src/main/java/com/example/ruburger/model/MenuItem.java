@@ -1,12 +1,14 @@
 package com.example.ruburger.model;
 
+import java.io.Serializable;
+
 /**
  * Abstract base class representing a menu item in the ordering system.
  * All menu items (e.g., sandwiches, beverages, sides) should extend this class
  * and implement the price method to define their pricing logic.
  * @author Eric Lin, Anish Mande
  */
-public abstract class MenuItem {
+public abstract class MenuItem implements Serializable {
     protected int quantity;
 
     /**

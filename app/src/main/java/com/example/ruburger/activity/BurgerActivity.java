@@ -3,12 +3,10 @@ package com.example.ruburger.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AlertDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.Spinner;
@@ -25,7 +23,6 @@ import java.util.ArrayList;
 
 public class BurgerActivity extends AppCompatActivity{
 
-    private Button addOrderButton, comboButton;
     private RadioButton singleOption, doubleOption;
     private RadioButton briocheOption, wheatOption, pretzelOption;
     private CheckBox lettuceOption, tomatoOption, onionOption, avocadoOption, cheeseOption;
@@ -42,8 +39,6 @@ public class BurgerActivity extends AppCompatActivity{
         Toast.makeText(this, "onCreate()", Toast.LENGTH_SHORT).show();
         currentOrder = Order.getInstance();
 
-        addOrderButton = findViewById(R.id.add_order_bt);
-        comboButton = findViewById(R.id.combo_bt);
         singleOption = findViewById(R.id.single_option);
         doubleOption = findViewById(R.id.double_option);
         briocheOption = findViewById(R.id.brioche_option);
@@ -136,13 +131,13 @@ public class BurgerActivity extends AppCompatActivity{
         new AlertDialog.Builder(this)
                 .setTitle("Order Confirmed")
                 .setMessage(burger.toString() + " has been added to the order.")
-                .setPositiveButton("OK", (dialog, which) -> finish()) // maybe return to main menu
+                .setPositiveButton("OK", (dialog, which) -> finish())
                 .show();
-
-        System.out.println(currentOrder);
     }
 
     public void makeCombo(View view) {
-        Toast.makeText(this, "Combo functionality not yet implemented", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, ComboActivity.class);
+        intent.putExtra("BURGER", burger);
+        startActivity(intent);
     }
 }

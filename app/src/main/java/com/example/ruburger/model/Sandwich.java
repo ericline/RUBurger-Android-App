@@ -1,12 +1,13 @@
 package com.example.ruburger.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Represents a customizable Sandwich menu item with bread, protein, and add-ons.
  * @author Eric Lin, Anish Mande
  */
-public class Sandwich extends MenuItem {
+public class Sandwich extends MenuItem implements Serializable {
     protected Bread bread;
     protected Protein protein;
     protected ArrayList<AddOns> addOns;
