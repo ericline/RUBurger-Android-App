@@ -145,6 +145,7 @@
                     android:layout_height="128dp"
                     android:backgroundTint="@color/red"
                     android:contentDescription="@string/beverages_desc"
+                    android:onClick="goToBeverages"
                     android:padding="25dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/beverages_icon" />
@@ -175,6 +176,7 @@
                     android:layout_height="128dp"
                     android:backgroundTint="@color/red"
                     android:contentDescription="@string/sides_desc"
+                    android:onClick="goToSides"
                     android:padding="20dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/sides_icon" />
@@ -183,7 +185,7 @@
                     android:id="@+id/sides_txt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/sandwiches"
+                    android:text="@string/sides"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:translationY="-25dp" />
@@ -212,6 +214,7 @@
                     android:layout_height="128dp"
                     android:backgroundTint="@color/red"
                     android:contentDescription="@string/current_desc"
+                    android:onClick="goToCurrentOrder"
                     android:padding="25dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/cart_icon" />
@@ -244,7 +247,7 @@
                     android:contentDescription="@string/all_desc"
                     android:padding="20dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/sides_icon" />
+                    android:src="@drawable/orders_icon" />
 
                 <TextView
                     android:id="@+id/all_txt"

@@ -1,5 +1,6 @@
 package com.example.ruburger.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -8,7 +9,7 @@ import java.util.ArrayList;
  * This class uses a singleton pattern for creating a single active order instance at a time.
  * @author Eric Lin, Anish Mande
  */
-public class Order {
+public class Order implements Serializable {
     private int number; //a unique integer to identify the order
     private ArrayList<MenuItem> items;
     private static int nextNumber = 1;

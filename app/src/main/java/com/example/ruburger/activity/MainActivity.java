@@ -10,22 +10,14 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.ruburger.R;
+import com.example.ruburger.model.Order;
 
-/**
- * Demo navigation between 2 activities.
- * @author Lily Chang
- */
+import java.util.ArrayList;
+
+
 public class MainActivity extends AppCompatActivity {
-    private Button burgerButton;
-    private Button sandwichButton;
-    private Button beverageButton;
-    private Button sidesButton;
-    private Button cartButton;
-    private Button ordersButton;
-    private Button exitButton;
 
-    private int NUMBER = 20;
-    private String STRING = "hi";
+    private final ArrayList<Order> orderArchive = new ArrayList<>();
 
 
     /**
@@ -37,17 +29,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toast.makeText(this, "onCreate()", Toast.LENGTH_SHORT).show();
     }
 
-
-    /**
-     * A callback method executed right after onCreate().
-     */
-    protected void onStart() {
-        super.onStart();
-        Toast.makeText(this, "onStart()", Toast.LENGTH_SHORT).show();
-    }
 
     public void goToBurger(View view) {
         Intent intent = new Intent(this, BurgerActivity.class);
@@ -59,6 +42,28 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goToBeverages(View view) {
+        Intent intent = new Intent(this, BeveragesActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToSides(View view) {
+        Intent intent = new Intent(this, SidesActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToCurrentOrder(View view) {
+        Intent intent = new Intent(this, CurrentOrderActivity.class);
+        intent.putExtra("ORDER_ARCHIVE", orderArchive);
+        startActivity(intent);
+    }
+
+    public void goToAllOrders(View view) {
+        Intent intent = new Intent(this, AllOrdersActivity.class);
+        intent.putExtra("ORDER_ARCHIVE", orderArchive);
+        startActivity(intent);
+    }
+
 
     /**
      * The event handler for the button click.
@@ -66,11 +71,6 @@ public class MainActivity extends AppCompatActivity {
      * INTKEY is the name to be used to retrieve the extra data NUMBER.
      * @param view the Android View which fired the event.
      */
-    public void showInteger(View view) {
-        Intent intent = new Intent(this, SecondActivity.class);
-        intent.putExtra("INTKEY", NUMBER); //the extra data is an integer
-        startActivity(intent);
-    }
 
     /**
      * The event handler for the button click.
@@ -78,11 +78,6 @@ public class MainActivity extends AppCompatActivity {
      * STRKEY is the name to be used to retrieve the extra data STRING.
      * @param view the Android View which fired the event.
      */
-    public void showString(View view) {
-        Intent intent = new Intent(this, SecondActivity.class);
-        intent.putExtra("STRKEY", STRING); //the extra data is a string
-        startActivity(intent);
-    }
 
     /**
      * Start an Activity containing a webpage. This will run the browser in order to display the
@@ -99,9 +94,6 @@ public class MainActivity extends AppCompatActivity {
      * Demo the LinearLayout.
      * @param view the Android View which fired the event.
      */
-    public void showLinearLayout(View view) {
-        Intent intent = new Intent(this, ThirdActivity.class);
-        startActivity(intent);
-    }
+
 
 }

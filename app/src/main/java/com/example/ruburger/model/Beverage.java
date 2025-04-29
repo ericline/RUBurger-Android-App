@@ -7,8 +7,8 @@ package com.example.ruburger.model;
  * @author Eric Lin, Anish Mande
  */
 public class Beverage extends MenuItem {
-    private final Size size;
-    private final Flavor flavor;
+    private Size size;
+    private Flavor flavor;
 
     /**
      * Constructs a Beverage with the given size and flavor.
@@ -39,6 +39,26 @@ public class Beverage extends MenuItem {
             return 0;
         }
     }
+    /**
+     * Returns a the flavor of a beverage.
+     * @return flavor
+     */
+    public Flavor getFlavor() {
+        return flavor;
+    }
+
+    /**
+     * Returns a the size of a beverage.
+     * @return size
+     */
+    public Size getSize() {
+        return size;
+    }
+
+    public void setSize(Size size) {
+        this.size = size;
+    }
+
 
     /**
      * Returns a string representation of the beverage without price or quantity.
