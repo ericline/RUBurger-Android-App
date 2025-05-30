@@ -15,6 +15,11 @@ import com.example.ruburger.model.Side;
 import com.example.ruburger.model.SideItem;
 import com.example.ruburger.model.Size;
 
+/**
+ * Activity for selecting a side item (e.g., chips, apple slices), choosing size and quantity,
+ * and adding it to the current order.
+ * @author Eric Lin
+ */
 public class SidesActivity extends AppCompatActivity {
 
     private Spinner sidesOption;
@@ -25,6 +30,11 @@ public class SidesActivity extends AppCompatActivity {
     private Order currentOrder;
     private SideItem sideItem;
 
+    /**
+     * Initializes the SidesActivity, loads UI components, and sets up spinners and listeners.
+     *
+     * @param savedInstanceState Saved instance state (if any).
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +54,9 @@ public class SidesActivity extends AppCompatActivity {
         updateSubtotal();
     }
 
+    /**
+     * Sets up the sides spinner with available side item options.
+     */
     private void setupSidesOption() {
         ArrayAdapter<Side> sidesAdapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, Side.values()
@@ -63,6 +76,9 @@ public class SidesActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Sets up the size spinner with available size options (Small, Medium, Large).
+     */
     private void setupSizeOption() {
         ArrayAdapter<Size> sizeAdapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, Size.values()
@@ -82,6 +98,9 @@ public class SidesActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Sets up the quantity spinner with options 1–10.
+     */
     private void setupQuantityOption() {
         Integer[] quantities = {1,2,3,4,5,6,7,8,9,10};
         ArrayAdapter<Integer> quantityAdapter = new ArrayAdapter<>(
@@ -102,6 +121,9 @@ public class SidesActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Updates the subtotal based on the selected side, size, and quantity.
+     */
     private void updateSubtotal() {
         Side selectedSide = (Side) sidesOption.getSelectedItem();
         Size selectedSize = (Size) sizeOption.getSelectedItem();
@@ -114,6 +136,11 @@ public class SidesActivity extends AppCompatActivity {
         subtotalText.setText(String.format("$%.2f", price));
     }
 
+    /**
+     * Adds the selected side item to the current order and shows a confirmation alert.
+     *
+     * @param view The view triggering this action (button).
+     */
     public void addToOrder(View view) {
         currentOrder.addItem(sideItem);
 

@@ -14,38 +14,53 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ruburger.R;
 import com.example.ruburger.model.Beverage;
-import com.example.ruburger.model.Flavor;
 import com.example.ruburger.model.Order;
 import com.example.ruburger.model.Size;
 
 import java.util.ArrayList;
 
+/**
+ * Adapter for displaying a list of Beverages in a RecyclerView.
+ * Allows users to select size, add quantities, and add beverages to an order.
+ * @author Eric Lin, Anish Mande
+ */
 public class BeverageAdapter extends RecyclerView.Adapter<BeverageAdapter.BeverageHolder> {
 
-    private Context context;
+    private final Context context;
     private ArrayList<Beverage> beverageList;
 
+    /**
+     * Constructs a new BeverageAdapter.
+     *
+     * @param context      The context used for inflating layouts and resources.
+     * @param beverageList The list of beverages to display.
+     */
     public BeverageAdapter(Context context, ArrayList<Beverage> beverageList) {
         this.context = context;
         this.beverageList = beverageList;
     }
 
+    /**
+     * ViewHolder class that represents each beverage item view.
+     */
     public static class BeverageHolder extends RecyclerView.ViewHolder {
         private TextView tv_name, tv_price;
         private ImageView im_item;
         private Button btn_add;
         private Spinner size_option;
-        private ConstraintLayout parentLayout;
 
         private Handler handler = new Handler();
         private Runnable delayedPrompt;
-        private int quantityClicked = 0;
 
+        /**
+         * Constructs a BeverageHolder and initializes the view components.
+         *
+         * @param itemView The item view layout for a beverage.
+         */
         public BeverageHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -54,11 +69,14 @@ public class BeverageAdapter extends RecyclerView.Adapter<BeverageAdapter.Bevera
             im_item = itemView.findViewById(R.id.im_item);
             btn_add = itemView.findViewById(R.id.btn_add);
             size_option = itemView.findViewById(R.id.size_option);
-            parentLayout = itemView.findViewById(R.id.rowLayout);
         }
 
+        /**
+         * Binds the beverage data to the UI components in the item view.
+         *
+         * @param beverage The beverage to bind to the view.
+         */
         public void bind(Beverage beverage) {
-            // Fix button text
             if (beverage.getQuantity() == 0) {
                 btn_add.setText("+");
             } else {
@@ -66,7 +84,7 @@ public class BeverageAdapter extends RecyclerView.Adapter<BeverageAdapter.Bevera
             }
 
             tv_name.setText(beverage.getFlavor().toString());
-            updatePrice(beverage); // price display based on quantity
+            updatePrice(beverage);
 
             // Set correct image
             switch (beverage.getFlavor()) {
@@ -145,7 +163,7 @@ public class BeverageAdapter extends RecyclerView.Adapter<BeverageAdapter.Bevera
                     } else if (position == 2) {
                         beverage.setSize(Size.LARGE);
                     }
-                    updatePrice(beverage); // update price dynamically
+                    updatePrice(beverage);
                 }
 
                 @Override
@@ -199,13 +217,17 @@ public class BeverageAdapter extends RecyclerView.Adapter<BeverageAdapter.Bevera
                     alert.show();
                 };
 
-                handler.postDelayed(delayedPrompt, 2500); // 2.5 seconds delay
+                handler.postDelayed(delayedPrompt, 1500);
             });
         }
 
+        /**
+         * Updates the displayed price for the beverage depending on its quantity and size.
+         *
+         * @param beverage The beverage to update the price for.
+         */
         private void updatePrice(Beverage beverage) {
             if (beverage.getQuantity() == 0) {
-                // quantity = 0, show base price (for 1 item)
                 double unitPrice;
                 if (beverage.getSize() == Size.SMALL) {
                     unitPrice = 1.99;
@@ -218,7 +240,6 @@ public class BeverageAdapter extends RecyclerView.Adapter<BeverageAdapter.Bevera
                 }
                 tv_price.setText(String.format("$%.2f", unitPrice));
             } else {
-                // quantity > 0, use beverage.price() normally
                 double totalPrice = beverage.price();
                 tv_price.setText(String.format("$%.2f", totalPrice));
             }
@@ -226,6 +247,13 @@ public class BeverageAdapter extends RecyclerView.Adapter<BeverageAdapter.Bevera
 
     }
 
+    /**
+     * Inflates the layout for a beverage item and creates a new ViewHolder.
+     *
+     * @param parent   The parent view group.
+     * @param viewType The view type of the new view.
+     * @return A new BeverageHolder instance.
+     */
     @NonNull
     @Override
     public BeverageHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -234,12 +262,23 @@ public class BeverageAdapter extends RecyclerView.Adapter<BeverageAdapter.Bevera
         return new BeverageHolder(view);
     }
 
+    /**
+     * Binds the beverage data at the given position to the ViewHolder.
+     *
+     * @param holder   The ViewHolder to bind data to.
+     * @param position The position of the item within the adapter's data set.
+     */
     @Override
     public void onBindViewHolder(@NonNull BeverageHolder holder, int position) {
         Beverage beverage = beverageList.get(position);
         holder.bind(beverage);
     }
 
+    /**
+     * Returns the total number of beverages in the list.
+     *
+     * @return The number of items.
+     */
     @Override
     public int getItemCount() {
         return beverageList.size();

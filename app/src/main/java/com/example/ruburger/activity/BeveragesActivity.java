@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.example.ruburger.R;
-import com.example.ruburger.activity.BeverageAdapter;
 import com.example.ruburger.model.Beverage;
 import com.example.ruburger.model.Flavor;
 import com.example.ruburger.model.Size;

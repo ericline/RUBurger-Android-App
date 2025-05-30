@@ -3,7 +3,6 @@ package com.example.ruburger.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AlertDialog;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +12,6 @@ import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.ruburger.R;
 import com.example.ruburger.model.AddOns;
@@ -23,6 +21,12 @@ import com.example.ruburger.model.Order;
 import com.example.ruburger.model.Sandwich;
 
 import java.util.ArrayList;
+
+/**
+ * Activity for creating a customized Sandwich order.
+ * Users can select protein, bread type, add-ons, quantity, and view dynamic subtotal updates.
+ * @author Eric Lin
+ */
 public class SandwichActivity extends AppCompatActivity {
     private RadioButton roastBeefOption, salmonOption, chickenOption;
     private RadioButton briocheOption, wheatOption, pretzelOption;
@@ -32,12 +36,17 @@ public class SandwichActivity extends AppCompatActivity {
     private Order currentOrder;
     private Sandwich sandwich;
 
+    /**
+     * Initializes the SandwichActivity, loads UI components,
+     * and sets up event listeners and default subtotal.
+     *
+     * @param savedInstanceState Saved instance state (if any).
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sandwich);
 
-        Toast.makeText(this, "onCreate()", Toast.LENGTH_SHORT).show();
         currentOrder = Order.getInstance();
 
         roastBeefOption = findViewById(R.id.roast_beef);
@@ -59,6 +68,9 @@ public class SandwichActivity extends AppCompatActivity {
         updateSubtotal();
     }
 
+    /**
+     * Sets up the quantity spinner with values 1–10.
+     */
     private void setupQuantitySpinner() {
         ArrayAdapter<Integer> quantityAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item,
@@ -68,6 +80,10 @@ public class SandwichActivity extends AppCompatActivity {
         quantitySpinner.setSelection(0);
     }
 
+    /**
+     * Sets up listeners for all options (protein, bread, add-ons, quantity)
+     * to dynamically update the subtotal when any selection changes.
+     */
     private void setupListeners() {
         roastBeefOption.setOnClickListener(v -> updateSubtotal());
         salmonOption.setOnClickListener(v -> updateSubtotal());
@@ -94,6 +110,9 @@ public class SandwichActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Updates the subtotal price based on the selected protein, bread, add-ons, and quantity.
+     */
     private void updateSubtotal() {
         Protein protein = null;
         if (roastBeefOption.isChecked()) {
@@ -131,6 +150,11 @@ public class SandwichActivity extends AppCompatActivity {
         subtotalText.setText(String.format("$%.2f", price));
     }
 
+    /**
+     * Adds the created sandwich to the current order and shows a confirmation alert.
+     *
+     * @param view The view triggering this action (button).
+     */
     public void addToOrder(View view) {
         currentOrder.addItem(sandwich);
 
@@ -141,6 +165,11 @@ public class SandwichActivity extends AppCompatActivity {
                 .show();
     }
 
+    /**
+     * Starts ComboActivity and passes the current customized sandwich to create a combo meal.
+     *
+     * @param view The view triggering this action (button).
+     */
     public void makeCombo(View view) {
         Intent intent = new Intent(this, ComboActivity.class);
         intent.putExtra("SANDWICH", sandwich);

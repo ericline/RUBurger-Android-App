@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.CurrentOrderActivity">
+    tools:context=".activity.AllOrdersActivity">
 
     <LinearLayout
         android:id="@+id/top_bar"
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:fontFamily="casual"
-            android:text="@string/current"
+            android:text="@string/active_orders"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textIsSelectable="false"
@@ -55,31 +55,11 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/send_order_bt"
-                android:layout_width="0dp"
-                android:layout_height="75dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_weight="1"
-                android:onClick="sendOrder"
-                android:text="@string/send_order" />
-
-            <Button
-                android:id="@+id/remove_item_bt"
-                android:layout_width="0dp"
-                android:layout_height="75dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_weight="1"
-                android:onClick="removeSelectedItem"
-                android:text="@string/remove_item" />
-
-            <Button
                 android:id="@+id/cancel_item_bt"
                 android:layout_width="0dp"
                 android:layout_height="75dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
                 android:layout_weight="1"
                 android:onClick="cancelEntireOrder"
                 android:text="@string/cancel_order" />
@@ -98,13 +78,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/order_number_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <Spinner
+                android:id="@+id/order_selector"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="74dp"
-                android:text="@string/current"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="275dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -173,7 +154,7 @@
     </androidx.cardview.widget.CardView>
 
     <ListView
-        android:id="@+id/item_list"
+        android:id="@+id/order_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_bar"

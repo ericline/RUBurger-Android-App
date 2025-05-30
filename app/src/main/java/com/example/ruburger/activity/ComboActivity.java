@@ -22,6 +22,11 @@ import com.example.ruburger.model.Sandwich;
 import com.example.ruburger.model.Side;
 import com.example.ruburger.model.Size;
 
+/**
+ * Activity for creating a Combo meal with a sandwich, side, and beverage.
+ * Users can customize the combo and add it to their current order.
+ * @author Eric Lin, Anish Mande
+ */
 public class ComboActivity extends AppCompatActivity {
 
     private Burger burger;
@@ -33,6 +38,12 @@ public class ComboActivity extends AppCompatActivity {
     private ImageView sidesImage, drinksImage;
     private TextView subtotalText, sandwichText;
 
+    /**
+     * Initializes the ComboActivity, sets up UI components,
+     * and prepares listeners and default selections.
+     *
+     * @param savedInstanceState Saved instance state (if any).
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +75,9 @@ public class ComboActivity extends AppCompatActivity {
         loadUI();
     }
 
+    /**
+     * Sets up the sides selection spinner with available side options.
+     */
     private void setupSidesSpinner() {
         ArrayAdapter<String> sidesAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item,
@@ -73,6 +87,9 @@ public class ComboActivity extends AppCompatActivity {
         sidesOptionSpinner.setSelection(0);
     }
 
+    /**
+     * Sets up the drinks selection spinner with available drink options.
+     */
     private void setupDrinksSpinner() {
         ArrayAdapter<String> drinksAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item,
@@ -82,6 +99,9 @@ public class ComboActivity extends AppCompatActivity {
         drinksOptionSpinner.setSelection(0);
     }
 
+    /**
+     * Sets up the quantity selection spinner with values from 1 to 10.
+     */
     private void setupQuantitySpinner() {
         ArrayAdapter<Integer> quantityAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item,
@@ -90,6 +110,9 @@ public class ComboActivity extends AppCompatActivity {
         quantitySpinner.setAdapter(quantityAdapter);
     }
 
+    /**
+     * Sets up listeners for spinners to update images and subtotal dynamically when options are changed.
+     */
     private void setupListeners() {
         sidesOptionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -119,6 +142,10 @@ public class ComboActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Loads the initial UI based on the passed-in sandwich or burger.
+     * Sets initial quantity, images, and subtotal.
+     */
     private void loadUI() {
         if (sandwich instanceof Burger) {
             burger = (Burger) sandwich;
@@ -131,6 +158,9 @@ public class ComboActivity extends AppCompatActivity {
         updateSubtotal();
     }
 
+    /**
+     * Updates the image view based on the currently selected side.
+     */
     private void updateSidesImage() {
         String selected = (String) sidesOptionSpinner.getSelectedItem();
         if (selected.equals("Chips")) {
@@ -140,6 +170,9 @@ public class ComboActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Updates the image view based on the currently selected drink.
+     */
     private void updateDrinksImage() {
         String selected = (String) drinksOptionSpinner.getSelectedItem();
         if (selected.equals("Coca Cola")) {
@@ -151,6 +184,10 @@ public class ComboActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Updates the subtotal based on the selected sandwich, side, drink, and quantity.
+     * Displays an error if no sandwich was passed to the activity.
+     */
     private void updateSubtotal() {
         Integer qty = (Integer) quantitySpinner.getSelectedItem();
         if (qty == null) return;
@@ -173,6 +210,11 @@ public class ComboActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Adds the created Combo to the current order and returns the user to the main menu.
+     *
+     * @param view The view that triggered this action (button).
+     */
     public void addToOrder(View view) {
         Beverage drink = new Beverage(Size.MEDIUM, Flavor.fromString((String) drinksOptionSpinner.getSelectedItem()));
         Side side = sidesOptionSpinner.getSelectedItem().equals("Chips") ? Side.CHIPS : Side.APPLE_SLICES;

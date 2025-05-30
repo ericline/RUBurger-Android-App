@@ -11,7 +11,6 @@ import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.ruburger.R;
 import com.example.ruburger.model.AddOns;
@@ -21,6 +20,11 @@ import com.example.ruburger.model.Burger;
 
 import java.util.ArrayList;
 
+/**
+ * Activity for creating a customized Burger order.
+ * Users can select patty type, bread, add-ons, quantity, and view subtotal dynamically.
+ * @author Eric Lin, Anish Mande
+ */
 public class BurgerActivity extends AppCompatActivity{
 
     private RadioButton singleOption, doubleOption;
@@ -31,12 +35,17 @@ public class BurgerActivity extends AppCompatActivity{
     private Order currentOrder;
     private Burger burger;
 
+    /**
+     * Initializes the BurgerActivity, loads UI elements,
+     * and sets up event listeners for user interactions.
+     *
+     * @param savedInstanceState Saved instance state from a previous session (if any).
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_burger);
 
-        Toast.makeText(this, "onCreate()", Toast.LENGTH_SHORT).show();
         currentOrder = Order.getInstance();
 
         singleOption = findViewById(R.id.single_option);
@@ -58,6 +67,9 @@ public class BurgerActivity extends AppCompatActivity{
 
     }
 
+    /**
+     * Sets up the quantity spinner with numbers 1–10 and updates subtotal when changed.
+     */
     private void setupQuantitySpinner() {
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item,
@@ -77,6 +89,10 @@ public class BurgerActivity extends AppCompatActivity{
         });
     }
 
+    /**
+     * Sets up click listeners for all options (patty, bread, and add-ons)
+     * to dynamically update the subtotal when any selection changes.
+     */
     private void setupListeners() {
         singleOption.setOnClickListener(v -> updateSubtotal());
         doubleOption.setOnClickListener(v -> updateSubtotal());
@@ -93,6 +109,10 @@ public class BurgerActivity extends AppCompatActivity{
 
     }
 
+    /**
+     * Updates the subtotal price based on the user's current selections.
+     * Gathers selected patty type, bread, add-ons, quantity, and recalculates the price.
+     */
     private void updateSubtotal() {
         boolean isDouble = doubleOption.isChecked();
 
@@ -125,6 +145,11 @@ public class BurgerActivity extends AppCompatActivity{
         subtotalText.setText(String.format("$%.2f", price));
     }
 
+    /**
+     * Adds the customized burger to the current order and shows a confirmation dialog.
+     *
+     * @param view The view that triggered this action (button).
+     */
     public void addToOrder(View view) {
         currentOrder.addItem(burger);
 
@@ -135,6 +160,12 @@ public class BurgerActivity extends AppCompatActivity{
                 .show();
     }
 
+    /**
+     * Starts the ComboActivity, passing the current customized burger
+     * for combo meal creation.
+     *
+     * @param view The view that triggered this action (button).
+     */
     public void makeCombo(View view) {
         Intent intent = new Intent(this, ComboActivity.class);
         intent.putExtra("BURGER", burger);
